@@ -1,5 +1,5 @@
 {% set name = "jupyterlab-pullrequests" %}
-{% set version = "2.0.0" %}
+{% set version = "2.0.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: 95aabeb545008598268705d95b13df0d0d71844964416e956701bc71f6b812fb
+  sha256: 5495401fa5dc83baab70177e572db442a4f474490f42365471203a748d6221a6
 
 build:
   noarch: python
   number: 0
-  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
@@ -45,7 +45,7 @@ about:
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
-  summary: 'Manage Pull Requests in JupyterLab'
+  summary: Manage Pull Requests in JupyterLab
   description: A JupyterLab extension for reviewing pull requests.
 
 extra:
