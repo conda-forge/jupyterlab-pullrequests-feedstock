@@ -1,5 +1,5 @@
 {% set name = "jupyterlab-pullrequests" %}
-{% set version = "2.0.1" %}
+{% set version = "2.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: 5495401fa5dc83baab70177e572db442a4f474490f42365471203a748d6221a6
+  sha256: bb7b89c905e23becc8063e426c7e2195169dc39d65cb5c5ed7e75fada8d445a2
 
 build:
   noarch: python
@@ -26,7 +26,7 @@ requirements:
   run:
     - python >=3.6,<4.0
     - jupyterlab >=2.0.0,<3.0.0
-    - nbdime >=2.0.0,<3.0.0
+    - jupyterlab-git >=0.24.0,<0.30.0
 
 test:
   requires:
