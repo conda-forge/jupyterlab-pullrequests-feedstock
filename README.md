@@ -38,6 +38,7 @@ Installing `jupyterlab-pullrequests` from the `conda-forge` channel can be achie
 
 ```
 conda config --add channels conda-forge
+conda config --set channel_priority strict
 ```
 
 Once the `conda-forge` channel has been enabled, `jupyterlab-pullrequests` can be installed with:
@@ -116,5 +117,6 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
+* [@bollwyvl](https://github.com/bollwyvl/)
 * [@fcollonval](https://github.com/fcollonval/)
 
