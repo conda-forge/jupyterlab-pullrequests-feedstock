@@ -1,49 +1,42 @@
 {% set name = "jupyterlab-pullrequests" %}
-{% set version = "2.1.0" %}
+{% set version = "3.0.0" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: bb7b89c905e23becc8063e426c7e2195169dc39d65cb5c5ed7e75fada8d445a2
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/jupyterlab_pullrequests-{{ version }}.tar.gz
+  sha256: 376b3ac17b3c6edce4e0b4ffc0f7fb60445bea89090cac6cdbc9efd6358bda1f
 
 build:
-  noarch: python
   number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - nodejs
-    - python >=3.6,<4.0
     - pip
-    - jupyterlab >=2.0.0,<3.0.0
-    - jupyter-packaging >=0.4.0,<0.5.0
-    - setuptools >=40.8.0
-    - wheel
+    - python >=3.6
   run:
-    - python >=3.6,<4.0
-    - jupyterlab >=2.0.0,<3.0.0
-    - jupyterlab-git >=0.24.0,<0.30.0
+    - jupyterlab >=3.0,<4
+    - jupyterlab-git >=0.30.0,<0.40.0a0
+    - python >=3.6
 
 test:
-  requires:
-    - pip
-    - nodejs
   imports:
     - jupyterlab_pullrequests
+    - jupyterlab_pullrequests.managers
   commands:
     - pip check
-    - jupyter serverextension list 2>&1 | grep -ie "jupyterlab_pullrequests.*OK"
-    - jupyter labextension list 2>&1 | grep -ie "@jupyterlab/pullrequests.*OK"
-    - jupyter lab build
+    - jupyter server extension list 2>&1 | grep -ie "jupyterlab_pullrequests.*OK"  # [unix]
+    - jupyter labextension list 2>&1 | grep -ie "@jupyterlab/pullrequests.*OK"  # [unix]
+  requires:
+    - pip
 
 about:
   home: https://github.com/jupyterlab/pull-requests
   license: BSD-3-Clause
-  license_family: BSD
   license_file: LICENSE
   summary: Manage Pull Requests in JupyterLab
   description: A JupyterLab extension for reviewing pull requests.
@@ -51,3 +44,4 @@ about:
 extra:
   recipe-maintainers:
     - fcollonval
+    - bollwyvl
