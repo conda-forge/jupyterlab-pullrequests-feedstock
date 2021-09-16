@@ -1,5 +1,5 @@
 {% set name = "jupyterlab-pullrequests" %}
-{% set version = "3.0.1" %}
+{% set version = "3.0.2" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/jupyterlab_pullrequests-{{ version }}.tar.gz
-  sha256: 6626760e1a3e6d536223cd1fd5e0d566b64b8c51882517aec646b024b9bb7d66
+  sha256: 45515c46203525706579656c318fa416946731578d6489173dc1ed082a02b558
 
 build:
   number: 0
