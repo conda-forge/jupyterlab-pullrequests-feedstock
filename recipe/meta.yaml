@@ -6,22 +6,22 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/jupyterlab_pullrequests-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/jupyterlab_pullrequests-{{ version }}.tar.gz
   sha256: 45515c46203525706579656c318fa416946731578d6489173dc1ed082a02b558
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
   run:
     - jupyterlab >=3.0,<4
     - jupyterlab-git >=0.30.0,<0.40.0a0
-    - python >=3.6
+    - python >={{ python_min }}
 
 test:
   imports:
@@ -33,6 +33,7 @@ test:
     - jupyter labextension list 2>&1 | grep -ie "@jupyterlab/pullrequests.*OK"  # [unix]
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/jupyterlab/pull-requests
